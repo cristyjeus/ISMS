@@ -48,7 +48,9 @@ class Ui_Dialog(object):
         self.pushButton.setText(_translate("Dialog", "확인", None))
 
     def btnClicked(self):
-        url = self.lineEdit.text()
+        self.listWidget.clear()
+        url = 'http://'+self.lineEdit.text()
+        print(url)
         try:
             # For Python 3.0 and later
             from urllib.request import urlopen
@@ -57,7 +59,6 @@ class Ui_Dialog(object):
             from urllib2 import urlopen
 
         from bs4 import BeautifulSoup
-        print(url,'se')
         html = urlopen(url)
         soup = BeautifulSoup(html,"html.parser")
         titles = soup.find_all("a")
