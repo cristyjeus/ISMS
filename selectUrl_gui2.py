@@ -35,9 +35,9 @@ class Ui_Dialog(object):
         self.pushButton = QtGui.QPushButton(Dialog)
         self.pushButton.setGeometry(QtCore.QRect(290, 50, 75, 23))
         self.pushButton.setObjectName(_fromUtf8("pushButton"))
-        self.textBrowser = QtGui.QTextBrowser(Dialog)
-        self.textBrowser.setGeometry(QtCore.QRect(20, 80, 251, 191))
-        self.textBrowser.setObjectName(_fromUtf8("textBrowser"))
+        self.listWidget = QtGui.QTextBrowser(Dialog)
+        self.listWidget.setGeometry(QtCore.QRect(20, 80, 251, 191))
+        self.listWidget.setObjectName(_fromUtf8("listWidget"))
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -62,9 +62,9 @@ class Ui_Dialog(object):
         html = urlopen(url)
         soup = BeautifulSoup(html,"html.parser")
         titles = soup.find_all("a")
-
         for title in titles:
-            self.textBrowser.append('link:{0:20s}\n'.format(title['href']))
+            self.listWidget.append('link:{0:20s}\n'.format(title['href']))
+
 
 
 if __name__ == "__main__":
