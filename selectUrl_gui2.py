@@ -35,7 +35,7 @@ class Ui_Dialog(object):
         self.pushButton = QtGui.QPushButton(Dialog)
         self.pushButton.setGeometry(QtCore.QRect(290, 50, 75, 23))
         self.pushButton.setObjectName(_fromUtf8("pushButton"))
-        self.listWidget = QtGui.QTextBrowser(Dialog)
+        self.listWidget = QtGui.QListWidget(Dialog)
         self.listWidget.setGeometry(QtCore.QRect(20, 80, 251, 191))
         self.listWidget.setObjectName(_fromUtf8("listWidget"))
 
@@ -48,6 +48,7 @@ class Ui_Dialog(object):
         self.pushButton.setText(_translate("Dialog", "확인", None))
 
     def btnClicked(self):
+        print(self.listWidget.count())
         self.listWidget.clear()
         url = 'http://'+self.lineEdit.text()
         print(url)
@@ -63,7 +64,7 @@ class Ui_Dialog(object):
         soup = BeautifulSoup(html,"html.parser")
         titles = soup.find_all("a")
         for title in titles:
-            self.listWidget.append('link:{0:20s}\n'.format(title['href']))
+            self.listWidget.addItem('link:{0:20s}\n'.format(title['href']))
 
 
 
